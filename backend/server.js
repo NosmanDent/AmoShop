@@ -45,21 +45,5 @@ app.post("/checkout", async (req, res) => {
   }
 });
 
-app.get("/success", (req, res) => {
-  // Clear the cart after successful payment
-  cart = {};
-
-  // Redirect to the success page on your website
-  res.redirect("https://amoshop.vercel.app/success");
-});
-
-app.get("/cancel", (req, res) => {
-  // Clear the cart if the payment is canceled
-  cart = {};
-
-  // Redirect to the cancel page on your website
-  res.redirect("https://amoshop.vercel.app/cancel");
-});
-
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Listening on port ${port}!`));
