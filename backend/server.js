@@ -27,8 +27,8 @@ app.post("/checkout", async (req, res) => {
     const session = await stripe.checkout.sessions.create({
       line_items: lineItems,
       mode: "payment",
-      success_url: "https://amoshop.onrender.com/success",
-      cancel_url: "https://amoshop.onrender.com/cancel",
+      success_url: "https://amoshop.vercel.app/success",
+      cancel_url: "https://amoshop.vercel.app/cancel",
     });
 
     // Save the cart items to the in-memory cart variable
@@ -46,7 +46,7 @@ app.get("/success", (req, res) => {
   cart = {};
 
   // Redirect to the success page on your website
-  res.redirect("https://amoshop.onrender.com/success");
+  res.redirect("https://amoshop.vercel.app/success");
 });
 
 app.get("/cancel", (req, res) => {
@@ -54,7 +54,7 @@ app.get("/cancel", (req, res) => {
   cart = {};
 
   // Redirect to the cancel page on your website
-  res.redirect("https://amoshop.onrender.com/cancel");
+  res.redirect("https://amoshop.vercel.app/cancel");
 });
 
 const port = process.env.PORT || 5000;
