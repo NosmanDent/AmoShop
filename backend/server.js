@@ -4,7 +4,11 @@ const cors = require("cors");
 const stripe = require("stripe")(process.env.STRIPE);
 
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://amoshop.vercel.app",
+  })
+);
 app.use(express.static("public"));
 app.use(express.json());
 
