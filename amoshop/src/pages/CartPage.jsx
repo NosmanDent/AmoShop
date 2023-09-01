@@ -25,7 +25,7 @@ const CartPage = () => {
     // Convert it to an array of all items from all categories
     const allItems = Object.values(carts).flat();
 
-    await fetch("http://localhost:5000/checkout", {
+    await fetch("https://amoshop.onrender.com/checkout", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

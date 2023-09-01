@@ -1,6 +1,6 @@
 require("dotenv").config();
 const express = require("express");
-var cors = require("cors");
+const cors = require("cors");
 const stripe = require("stripe")(process.env.STRIPE);
 
 const app = express();
@@ -27,8 +27,8 @@ app.post("/checkout", async (req, res) => {
     const session = await stripe.checkout.sessions.create({
       line_items: lineItems,
       mode: "payment",
-      success_url: "http://localhost:5174/success", // Redirect to the server's success endpoint
-      cancel_url: "http://localhost:5174/cancel",
+      success_url: "https://amoshop.onrender.com/success",
+      cancel_url: "https://amoshop.onrender.com/cancel",
     });
 
     // Save the cart items to the in-memory cart variable
@@ -46,7 +46,7 @@ app.get("/success", (req, res) => {
   cart = {};
 
   // Redirect to the success page on your website
-  res.redirect("http://localhost:5174/success");
+  res.redirect("https://amoshop.onrender.com/success");
 });
 
 app.get("/cancel", (req, res) => {
@@ -54,7 +54,8 @@ app.get("/cancel", (req, res) => {
   cart = {};
 
   // Redirect to the cancel page on your website
-  res.redirect("http://localhost:5174/cancel");
+  res.redirect("https://amoshop.onrender.com/cancel");
 });
 
-app.listen(5000, () => console.log("Listening on port 5000!"));
+const port = process.env.PORT || 5000;
+app.listen(port, () => console.log(`Listening on port ${port}!`));
